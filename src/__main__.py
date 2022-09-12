@@ -23,7 +23,11 @@ def run(keyargs):
         - keyargs.metadata_sheet (`String`): Dataset sheet.
         - keyargs.rows_to_skip (`Integer`): Rows to skip.
     '''
-    pass
+    excel_path = keyargs.get('excel_path')
+    excel_sheet = keyargs.get('metadata_sheet')
+    excel_skiped_rows = keyargs.get('rows_to_skip')
+
+    print(utils.get_excel_data(excel_path, excel_sheet, excel_skiped_rows))
 
 
 if __name__ == '__main__':

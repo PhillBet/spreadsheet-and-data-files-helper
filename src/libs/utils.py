@@ -54,10 +54,10 @@ def get_author_data_frame(filename: str, load_sheet, rows_to_skip: int) -> panda
 
 def get_data_frame_tsv(filename: str) -> pandas.DataFrame:
     '''
-    Read and convert the TSV file to Panda DataFrame.
+    Read and convert the TSV/CSV file to Panda DataFrame.
 
     Param
-        - filename (`String`): full tsv file path.
+        - filename (`String`): full TSV/CSV file path.
 
     Returns
         - dataset_df (`pandas.DataFrame`): DataFrame with the Datasets Record Excel file data.
@@ -99,35 +99,17 @@ def get_excel_data(filename: str, load_sheet, rows_to_skip: int) -> dict:
 
 def get_tsv_data(filename: str) -> dict:
     '''
-    Process the tsv file as a DataFrame and return it as a JSON object
+    Process the TSV/CSV file as a DataFrame and return it as a JSON object
 
     Param
-        - filename (`String`): tsv file name.
+        - filename (`String`): TSV/CSV file name.
 
     Returns
-        - data_frame_json (`Dict`): json dictionary with the tsv data.
+        - data_frame_json (`Dict`): json dictionary with the TSV/CSV data.
     '''
     data_frame = get_data_frame_tsv(filename)
     data_frame_json = get_json_from_data_frame(data_frame)
     return data_frame_json
-
-
-def excel_file_mapping(filename, keyargs):
-    '''
-    Reads one by one all the valid XLSX files and returns the corresponding data dictionaries.
-
-    Param
-        - filename (`String`): full XLSX file path.
-        - keyarglibs.url (`String`): URL where database is located.
-        - keyargs.dataset_type (`String`): Excel record type ["TFBINDING", "GENE EXPRESION", "TSS", "TUS", "TTS", "REGULONS"].
-        - keyargs.release_process_date (`String`): Date record of program execution.
-        - keyargs.version (`String`): Input data version.
-        - keyargs.email (`String`): User email address to connect to PUBMED database.
-
-
-    Returns
-        - dataset_dict (`Dict`): a dictionary with the necessary dataset data.
-    '''
 
 
 def validate_directories(data_path):
